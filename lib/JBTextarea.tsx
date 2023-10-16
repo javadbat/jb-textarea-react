@@ -92,7 +92,7 @@ export type JBTextareaEventType<T> = T & {
 }
 type JBTextareaProps = {
     label?: string,
-    value?: string,
+    value: string | null | undefined,
     onChange?: (e:JBTextareaEventType<Event>)=>void,
     onFocus?:(e:JBTextareaEventType<FocusEvent>)=>void,
     onBlur?:(e:JBTextareaEventType<FocusEvent>)=>void,

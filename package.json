@@ -14,7 +14,7 @@
     "multiline input",
     "react component"
   ],
-  "version": "0.2.1",
+  "version": "0.2.2",
   "bugs": "https://github.com/javadbat/jb-textarea-react/issues",
   "license": "MIT",
   "files": [
