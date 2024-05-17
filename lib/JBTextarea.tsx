@@ -16,76 +16,77 @@ declare global {
         label?: string,
         name?:string,
         message?:string,
+        placeholder?:string,
         // ref:React.RefObject<JBDateInputWebComponent>,
       }
     }
 }
 // eslint-disable-next-line react/display-name
 const JBTextarea = React.forwardRef((props:JBTextareaProps, ref) => {
-    {
-        //we set this state so when ref change we have a render and our event listener will be updated
-        const [refChangeCount , refChangeCountSetter] = useState(0);
-        const element = useRef<JBTextareaWebComponent>(null);
-        useImperativeHandle(
-            ref,
-            () => (element ? element.current : {}),
-            [element],
-        );
-        useEffect(()=>{
-            refChangeCountSetter(refChangeCount+1);
-        },[element.current]);
-        function onChange(e:JBTextareaEventType<Event>) {
-            if (props.onChange) {
-                props.onChange(e);
-            }
-        }
-        function onKeydown(e:JBTextareaEventType<KeyboardEvent>) {
-            if (props.onKeydown) {
-                props.onKeydown(e);
-            }
-        }
-        function onKeyup(e:JBTextareaEventType<KeyboardEvent>) {
-            if (props.onKeyup) {
-                props.onKeyup(e);
-            }
-        }
-        function onFocus(e:JBTextareaEventType<FocusEvent>) {
-            if (props.onFocus && e instanceof FocusEvent) {
-                props.onFocus(e);
-            }
-        }
-        function onBlur(e:JBTextareaEventType<FocusEvent>) {
-            if (props.onBlur && e instanceof FocusEvent) {
-                props.onBlur(e);
-            }
-        }
-        useEffect(() => {
-            const value:string = props.value || '';
-            if(element.current){
-                element.current.value = value;
-            }
-        }, [props.value]);
-
-        useEffect(() => {
-            if(element.current){
-                element.current.validationList = props.validationList || [];
-            }
-        }, [props.validationList]);
-
-        useEffect(() => {
-            if(element.current){
-                element.current.autoHeight = props.autoHeight || false;
-            }
-        }, [props.autoHeight]);
-        useEvent(element.current, 'change', onChange);
-        useEvent(element.current, 'keydown', onKeydown);
-        useEvent(element.current, 'keyup', onKeyup);
-        useEvent(element.current, 'focus', onFocus);
-        useEvent(element.current, 'blur', onBlur);
-        return (
-            <jb-textarea placeholder={props.placeholder} class={props.className} ref={element} label={props.label} message={props.message}></jb-textarea>
-        );
+  {
+    //we set this state so when ref change we have a render and our event listener will be updated
+    const [refChangeCount , refChangeCountSetter] = useState(0);
+    const element = useRef<JBTextareaWebComponent>(null);
+    useImperativeHandle(
+      ref,
+      () => (element ? element.current : {}),
+      [element],
+    );
+    useEffect(()=>{
+      refChangeCountSetter(refChangeCount+1);
+    },[element.current]);
+    function onChange(e:JBTextareaEventType<Event>) {
+      if (props.onChange) {
+        props.onChange(e);
+      }
     }
+    function onKeydown(e:JBTextareaEventType<KeyboardEvent>) {
+      if (props.onKeydown) {
+        props.onKeydown(e);
+      }
+    }
+    function onKeyup(e:JBTextareaEventType<KeyboardEvent>) {
+      if (props.onKeyup) {
+        props.onKeyup(e);
+      }
+    }
+    function onFocus(e:JBTextareaEventType<FocusEvent>) {
+      if (props.onFocus && e instanceof FocusEvent) {
+        props.onFocus(e);
+      }
+    }
+    function onBlur(e:JBTextareaEventType<FocusEvent>) {
+      if (props.onBlur && e instanceof FocusEvent) {
+        props.onBlur(e);
+      }
+    }
+    useEffect(() => {
+      const value:string = props.value || '';
+      if(element.current){
+        element.current.value = value;
+      }
+    }, [props.value]);
+
+    useEffect(() => {
+      if(element.current){
+        element.current.validationList = props.validationList || [];
+      }
+    }, [props.validationList]);
+
+    useEffect(() => {
+      if(element.current){
+        element.current.autoHeight = props.autoHeight || false;
+      }
+    }, [props.autoHeight]);
+    useEvent(element.current, 'change', onChange);
+    useEvent(element.current, 'keydown', onKeydown);
+    useEvent(element.current, 'keyup', onKeyup);
+    useEvent(element.current, 'focus', onFocus);
+    useEvent(element.current, 'blur', onBlur);
+    return (
+      <jb-textarea placeholder={props.placeholder} class={props.className} ref={element} label={props.label} message={props.message}></jb-textarea>
+    );
+  }
 });
 export type JBTextareaEventType<T> = T & {
     target: JBTextareaWebComponent
