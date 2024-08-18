@@ -3,7 +3,7 @@
 simple textarea react component to input long text
 
 - lightweight
-- zero dependancy
+- zero dependency
 - help you manage validation in easy way
 - config auto height grow ability with max height
 
