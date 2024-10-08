@@ -7,7 +7,7 @@ simple textarea react component to input long text
 - help you manage validation in easy way
 - config auto height grow ability with max height
 
-sample: <https://codepen.io/javadbat/pen/poRZVXe>
+Demo : [codeSandbox preview](https://3f63dj.csb.app/samples/jb-textarea) for just see the demo and [codeSandbox editor](https://codesandbox.io/p/sandbox/jb-design-system-3f63dj?file=%2Fsrc%2Fsamples%2FJBTextarea.tsx) if you want to see and play with code
 
 ## installation and setup
 
