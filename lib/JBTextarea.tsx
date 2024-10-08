@@ -1,10 +1,10 @@
 /* eslint-disable no-inner-declarations */
-import React, { useRef, useEffect, useImperativeHandle, useState } from 'react';
+import React, { useRef, useEffect, useImperativeHandle, useState, CSSProperties } from 'react';
 import 'jb-textarea';
 // eslint-disable-next-line no-duplicate-imports
-import {JBTextareaValidationItem, JBTextareaWebComponent} from 'jb-textarea';
+import {JBTextareaWebComponent,ValidationValue} from 'jb-textarea';
 import { useEvent } from '../../../common/hooks/use-event';
-
+import { ValidationItem } from "jb-validation/types";
 declare global {
     // eslint-disable-next-line @typescript-eslint/no-namespace
     namespace JSX {
@@ -45,6 +45,11 @@ const JBTextarea = React.forwardRef((props:JBTextareaProps, ref) => {
         props.onKeydown(e);
       }
     }
+    function onInput(e:JBTextareaEventType<InputEvent>) {
+      if (props.onInput) {
+        props.onInput(e);
+      }
+    }
     function onKeyup(e:JBTextareaEventType<KeyboardEvent>) {
       if (props.onKeyup) {
         props.onKeyup(e);
@@ -69,7 +74,7 @@ const JBTextarea = React.forwardRef((props:JBTextareaProps, ref) => {
 
     useEffect(() => {
       if(element.current){
-        element.current.validationList = props.validationList || [];
+        element.current.validation.list = props.validationList || [];
       }
     }, [props.validationList]);
 
@@ -80,11 +85,12 @@ const JBTextarea = React.forwardRef((props:JBTextareaProps, ref) => {
     }, [props.autoHeight]);
     useEvent(element.current, 'change', onChange);
     useEvent(element.current, 'keydown', onKeydown);
+    useEvent(element.current, 'input', onInput);
     useEvent(element.current, 'keyup', onKeyup);
     useEvent(element.current, 'focus', onFocus);
     useEvent(element.current, 'blur', onBlur);
     return (
-      <jb-textarea placeholder={props.placeholder} class={props.className} ref={element} label={props.label} message={props.message}></jb-textarea>
+      <jb-textarea placeholder={props.placeholder} class={props.className} style={props.style} ref={element} label={props.label} message={props.message}></jb-textarea>
     );
   }
 });
@@ -93,7 +99,7 @@ export type JBTextareaEventType<T> = T & {
 }
 type JBTextareaProps = {
     label?: string,
-    value: string | null | undefined,
+    value?: string | null | undefined,
     onChange?: (e:JBTextareaEventType<Event>)=>void,
     onFocus?:(e:JBTextareaEventType<FocusEvent>)=>void,
     onBlur?:(e:JBTextareaEventType<FocusEvent>)=>void,
@@ -103,7 +109,8 @@ type JBTextareaProps = {
     onBeforeinput?: (e:JBTextareaEventType<InputEvent>)=>void,
     placeholder?:string,
     className?: string,
-    validationList?:JBTextareaValidationItem[],
+    style?:CSSProperties,
+    validationList?:ValidationItem<ValidationValue>[],
     autoHeight?: boolean,
     message?:string
 }

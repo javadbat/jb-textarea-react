@@ -14,7 +14,7 @@
     "multiline input",
     "react component"
   ],
-  "version": "1.0.0",
+  "version": "3.0.0",
   "bugs": "https://github.com/javadbat/jb-textarea-react/issues",
   "license": "MIT",
   "files": [
@@ -24,12 +24,12 @@
     "dist/"
   ],
   "main": "index.js",
-  "types": "./dist/jb-textarea/lib/JBTextarea.d.ts",
+  "types": "./dist/react-component/jb-textarea/lib/JBTextarea.d.ts",
   "repository": {
 		"type": "git",
 		"url": "git@github.com:javadbat/jb-textarea-react.git"
   },
   "dependencies": {
-    "jb-textarea": ">=2.2.0"
+    "jb-textarea": ">=3.0.0"
   }
 }

@@ -1,1 +1,1 @@
-export {JBTextarea} from './dist/JBTextArea.js';
+export {JBTextarea} from './dist/JBTextarea.js';
