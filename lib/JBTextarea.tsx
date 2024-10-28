@@ -77,6 +77,11 @@ const JBTextarea = React.forwardRef((props:JBTextareaProps, ref) => {
         element.current.validation.list = props.validationList || [];
       }
     }, [props.validationList]);
+    useEffect(() => {
+      if(element.current && props.required!== undefined){
+        props.required?element.current.setAttribute("required",''):element.current.removeAttribute("required");
+      }
+    }, [props.required]);
 
     useEffect(() => {
       if(element.current){
@@ -90,7 +95,7 @@ const JBTextarea = React.forwardRef((props:JBTextareaProps, ref) => {
     useEvent(element.current, 'focus', onFocus);
     useEvent(element.current, 'blur', onBlur);
     return (
-      <jb-textarea placeholder={props.placeholder} class={props.className} style={props.style} ref={element} label={props.label} message={props.message}></jb-textarea>
+      <jb-textarea placeholder={props.placeholder} class={props.className} style={props.style} ref={element} label={props.label} message={props.message} name={props.name}></jb-textarea>
     );
   }
 });
@@ -112,6 +117,8 @@ type JBTextareaProps = {
     style?:CSSProperties,
     validationList?:ValidationItem<ValidationValue>[],
     autoHeight?: boolean,
-    message?:string
+    message?:string,
+    name?:string,
+    required?:boolean
 }
 export {JBTextarea};
