@@ -2,9 +2,9 @@
 import React, { useRef, useEffect, useImperativeHandle, useState, CSSProperties } from 'react';
 import 'jb-textarea';
 // eslint-disable-next-line no-duplicate-imports
-import {JBTextareaWebComponent,ValidationValue} from 'jb-textarea';
+import {JBTextareaWebComponent, type ValidationValue} from 'jb-textarea';
 import { useEvent } from '../../../common/hooks/use-event.js';
-import { ValidationItem } from "jb-validation/types";
+import { type ValidationItem } from "jb-validation";
 declare global {
     // eslint-disable-next-line @typescript-eslint/no-namespace
     namespace JSX {
