@@ -1,5 +1,8 @@
 # jb-textarea-react
 
+> [!WARNING]  
+> this package is deprecated and moved to [jb-textarea/react](https://github.com/javadbat/jb-textarea/tree/main/react)
+
 simple textarea react component to input long text
 
 - lightweight
